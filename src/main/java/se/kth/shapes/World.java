@@ -26,9 +26,16 @@ public class World {
         this.height = height;
 
         shapes = new Shape[3];
-        shapes[0] = new Line(50, 50, Color.BLUE, 50, 250);
-        shapes[1] = new Circle(100, 100, Color.RED, 250);
-        shapes[2] = new Rectangle(200, 200, Color.GREEN, 50, 100);
+        Circle c1 = new Circle(100, 100, Color.RED, 100, false);
+        shapes[0] = new Line(50, 50, Color.BLUE, 100, 100);
+        shapes[1] = c1;
+        shapes[2] = new Rectangle(200, 200, Color.GREEN, 50, 100, false);
+        for(Shape s : shapes){
+            if(s instanceof FillableShape){
+                FillableShape f = (FillableShape) s;
+                f.setFilled(f.isFilled());
+            }
+        }
     }
 
     /**
